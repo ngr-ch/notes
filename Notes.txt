@@ -1,0 +1,33 @@
+AZ CLI Commands ARM for LINUX 
+-------------------Create  RG --------------------------
+az group create -n Naag -l westus
+-------------------Create App Service Plan-------on Linux-------
+az appservice plan create -n ngr-app123 -g Naag -l westus --sku F1 --is-linux
+-------------------Create WebApp Service------------------------
+az webapp create -n ngr-app123 -g Naag --plan ngr-app123 --deployment-container-image-name nginx
+
+DELETE: RGM:
+az webapp delete -n ngr-app123 -g Naag
+az group delete -n Naag 
+
+
+AZ CLI Commands ARM for Default(Windows) 
+-------------------Create  RG --------------------------
+az group create -n RG -l westus
+-------------------Create App Service Plan-------on Linux-------
+az appservice plan create -n ngr-app123 -g N_RG -l westus 
+-------------------Create WebApp Service------------------------
+az webapp create -n ngr-app123 -g N_RG --plan ngr-app123
+
+DELETE: RGM:
+az webapp delete -n ngr-app123 -g Naag
+az group delete -n Naag 
+#Copy & Paste in CLI
+echo 'Creating Rerouce Group RG'
+az group create -n RG -l westus
+Start-Sleep 30
+echo 'Creating App Service Plan in Rerouce Group RG'
+az appservice plan create -n ngr-app123 -g RG -l westus --sku F1
+echo 'WebApp App Service Plan in Rerouce Group RG'
+Start-Sleep 30
+az webapp create -n ngr-app123 -g RG --plan ngr-app123
